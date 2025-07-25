@@ -1,0 +1,110 @@
+<!--
+2e. Let’s say we’re creating an e-commerce app, and one of the products is socks.
+Create an <App> component and display the details on the right onto the website:
+
+2f. Display 2 more products on the website: tennis balls and a t-shirt.
+Instead of duplicating the code, create a <ProductDetails> component, and use props to make it reusable. 
+Then, display 3 <ProductDetails> on the website for the socks, tennis balls, and t-shirt.
+
+2g. Continuing from 2f, some products can have a discount. Add a prop to <ProductDetails> called discountPrice. 
+If discountPrice exists, display it under the original price.
+Give the socks product a discount price of $5.45
+
+2h. If a product has a discountPrice also cross out the original price.
+To cross out text, surround it with the element: <del>...</del>
+Don’t cross out the original price if there’s no discount. To check if discountPrice does not exist, use !discountPrice
+There are several ways to do this exercise. As long as you get the final result, you’re good!
+
+2j. We’ll add an image at the top of each Product. In your browser, go to
+supersimple.dev/images/___ (replace ___ with cotton-socks.png,
+tennis-balls.png, and plain-t-shirt.png). Download the images.
+In <ProductDetails> add an <img> at the top, and add a prop called
+imageSrc. Give the <img> the attribute src={imageSrc} (this sets the
+src attribute to the value of the imageSrc prop).
+Then in <App>, give each <ProductDetails> a prop imageSrc="___"
+(replace with the file name of the image, like cotton-socks.png)
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>  
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel"> 
+
+    
+
+    function ProductDetails(props) {
+        // console.log(props.productName)
+        const productName = props.productName;
+        const price = props.price;
+        const discountPrice = props.discountPrice;  // 2nd time the discountPrice will be undefined 
+        const imageSrc = props.imageSrc;
+        const width = props.width;
+        console.log(imageSrc);
+
+        if(discountPrice){  // that means discountPrice is existed or the condition is true then return this 
+          return(
+            <>
+            <img src={imageSrc} width={width}/>
+            <p>{productName}</p>
+            <del><p>Price: {price}</p></del>
+            <p>{discountPrice}</p>
+            <button>Add to Cart</button>
+            <br></br>
+            </>
+          )
+        }
+
+        else{
+          return(
+            <>
+            <img src={imageSrc} width={width} />
+            <p>{productName}</p>
+            <p>Price: {price}</p>
+            <button>Add to Cart</button>
+            <br></br>
+            </>
+          )
+        }
+
+    }
+
+    const container = document.querySelector('.js-container')
+
+    function Load() {
+      return(
+        <>
+        <ProductDetails productName="Cotton socks" price="$10.90" discountPrice="Discount Price: $5.45" imageSrc="../images/cotton-socks.png" width="140"/>
+        <ProductDetails productName="Tennis ball" price="$6.00"  imageSrc="../images/tennis-balls.png" width="140" />
+        <ProductDetails productName="Plain T-Shirt" price="$7.99" imageSrc="../images/plain-t-shirt.png" width="140" />
+        </>
+      )
+    }
+
+/*    const load = (
+        <>
+        <ProductDetails productName="Cotton socks" price="$10.90" discountPrice="Discount Price: $5.45" imageSrc="cotton-socks.png" width="140"/>
+        <ProductDetails productName="Tennis ball" price="$6.00"  imageSrc="tennis-balls.png" width="140" />
+        <ProductDetails productName="Plain T-Shirt" price="$7.99" imageSrc="plain-t-shirt.png" width="140" />
+        </>
+    )
+
+    ReactDOM.createRoot(container).render(load);
+*/
+    ReactDOM.createRoot(container).render(<Load />);
+    
+    </script>
+  </body>
+</html>
+
+
+    

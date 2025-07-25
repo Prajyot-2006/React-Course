@@ -1,0 +1,43 @@
+<!--
+1g. We’re going to load the DayJS external library on the website (DayJS is an external library that helps us work with dates easier).
+
+To load DayJS, create a <script> above your code, and load the URL:
+https://unpkg.com/supersimpledev/dayjs.js
+
+After DayJS is loaded, use the code: dayjs().format('MMMM D')
+to get the current date. Display this result in the console.
+
+
+1h. Continuing from 1g, insert the date in a paragraph element, and display it on the website in this format:
+Today is July 20
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>  
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">  
+     const a = dayjs();
+     console.log(a);
+
+     const formatting = a.format('MMMM D');
+     console.log(formatting);
+
+     const reFormatting = `Today is ${formatting}`
+    
+     const text = document.querySelector('.js-container');
+     ReactDOM.createRoot(text).render(reFormatting);
+
+        
+    </script>
+  </body>
+</html>

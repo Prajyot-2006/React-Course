@@ -1,0 +1,36 @@
+<!--
+Recommended: create a copy of react-basics.html to do these exercises.
+1a. Using React, display a button on the website with the text “Good job!” inside the button.
+1b. Using React, display a paragraph with the text “My name is [NAME]” on the website (replace [NAME] with your name).
+1c. Create the design on the right and display it on the website using React.
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div> 
+
+    
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>  
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+    <script type="text/babel">  
+    
+      const container = document.querySelector('.js-container');
+      const button = <button>Good Job!</button>;
+      const name = 'prajyot';
+      const paragraph = <p>My name is {name}</p>
+      const div = <div>{button} {paragraph}</div>
+      ReactDOM.createRoot(container).render(div);
+
+
+    </script>
+  </body>
+</html>
+
+
+

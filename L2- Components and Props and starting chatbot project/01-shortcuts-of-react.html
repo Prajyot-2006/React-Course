@@ -1,0 +1,59 @@
+<!--
+Component = piece of the website 
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>  
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel"> 
+
+    function ChatInput() {  // the component name must start with a capital letter , this function will return some html
+        return (
+            <div>
+              <input></input>
+              <button>Send</button>    
+            </div>
+        )
+    }
+
+    const container = document.querySelector('.js-container');
+    const div =  (  // we can also do like this <ChatInput></ChatInput>  this i known as component syntax
+        <div>
+            {ChatInput()}
+        </div>
+    )
+
+    ReactDOM.createRoot(container).render(div);
+    
+
+    
+    </script>
+  </body>
+</html>
+
+<!--
+in react we can do shortcuts like 
+<input></input>  // there is a shortcut for this in react
+<input />   // this shortcut is only applicable if there is nothing present inside the tag 
+
+
+also when creating component like ChatInput or etc and when using that component in a variable for eg look at div varaible 
+{ChatInput()}  // instead of this we can do like this <ChatInput></ChatInput> and there is nothing present in this tag so 
+we can also do like this <ChatInput />
+
+
+These are all react shortcuts which we gonna use in next file
+-->
+
+    

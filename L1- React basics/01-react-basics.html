@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div> <!--everythin that we create with react is gonna displayed in this element-->
+    <script>console.log('hello');</script>
+    <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>
+    <!--This loads the react external library-->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>  <!--this 2 scripts element load react external library-->
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> <!--this 2 scripts element load react external library-->
+    <!--we are loading another external library called babel-->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> <!--babel = Javasript compiler , that translate other languages into javascript-->
+    <script type="text/babel">  // when we want to translate something in javascript we have to give the script element a attribute type = "text/babel"  so this attribute tells babel to translate all the code inside here into normal JS 
+
+      const button = <button>hello</button> // JSX = same as JavaScript,but it lets us write HTML directly inside JavaScript code — making UI creation easier in React.
+// Problem with JSX : Browsers don’t understand JSX directly it only understand normal javascript. inorder to use JSX we need to translate it into normal Javascript before running the code
+// and then our webbrowser can understand this code  also Babel = translates JSX into Javascript to use babel we need to do 2 steps : 1st we need to load the babel external library which we already did above 2nd when we want to trasnalte something into javascript we have to give the script element an attribute type="text/babel"
+      
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render('Welcome to SuperSimpleDev React Course'); // render means to display something
+//    ReactDOM.createRoot(container).render(button);  we can also do like this; means also can put variable in it 
+    </script>
+  </body>
+</html>
+
+
+
+
+<!--
+ChatGPT said:
+React is an external library
+It's a bunch of code that is outside our computer.
+We can load this code on our website, and use it.
+
+
+why the react has 2 external libraries ?
+React = shared features
+ReactDOM = features specific to websites
+
+React can be used in different places :
+1. Websites 
+2. Mobile apps 
+
+If we are using react to create websites : we need to load the React and ReactDOM external library 
+If we are using react to create mobile apps : we need to load the React and ReactNative external library 
+
+ReactDOM.createRoot() = basically sets up react 
+to set up react we have to give it a html element (which is the container in this case)
+
+When using React, we don’t use normal JavaScript.
+We use an enhanced version of JavaScript, which includes JSX — a special syntax that lets us write HTML-like code inside JavaScript.
+-->

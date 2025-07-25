@@ -1,0 +1,56 @@
+<!--
+1d. You buy 1 pack of socks for $10 and 2 T-shirts for $8 each. Using JavaScript, calculate the total cost of this order, save it in a variable named productCost, and display it in the Console.
+1e. Continuing from 1d, insert the productCost variable into a paragraph element, create the design below, and display it on the website.
+Product cost: $__
+
+1f. Continuing from 1e, let’s pretend the shipping cost is $5. Save this in a variable named shippingCost, calculate the total cost using JavaScript (productCost + shippingCost), and display the results on the website using the design below:
+
+Product cost: $ A
+Shipping cost: $ B
+Total cost: $ C
+[Place your order]
+
+Note: replace A and insert productCost,
+replace B and insert shippingCost,
+replace C and insert the total cost.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div> 
+
+
+    
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>  
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+    <script type="text/babel">  
+      const container = document.querySelector('.js-container');
+      const sox = 10;
+      const tshirts = 8;
+
+      const productCost = sox + 2*tshirts;  // 26
+      const dollarProductCost = `Product cost: $${productCost}`;
+
+      const shippingCost = 5;
+      const dollarShippingCost = `Shipping Cost: $${shippingCost}`;
+
+      const totalCost = productCost + shippingCost;
+      const dollarTotalCost = `Total Cost: $${totalCost}`;
+
+      const div = <div>
+        <p>{dollarProductCost}</p>
+        <p>{dollarShippingCost}</p>
+        <p>{dollarTotalCost}</p>
+        <button>Place your order</button>
+      </div>
+
+      ReactDOM.createRoot(container).render(div);
+        
+    </script>
+  </body>
+</html>

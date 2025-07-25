@@ -1,0 +1,52 @@
+<!--
+1i. Using DayJS, get the current time using dayjs().format('HH:mm:ss') and display it on the website in this format:
+Current time: 21:39:28
+
+
+1j. We’ll create a clock. Continue from exercise 1i and do these steps:
+First, instead of doing ReactDOM.createRoot(...).render(...),
+save the root in a variable const root = ReactDOM.createRoot(...)
+and then do root.render(...);
+
+Use the JavaScript code: setInterval(() => { ... }, 1000);
+(replace ... with some code and it will run this code every second).
+
+Inside setInterval, display the current time
+on the website using root.render(...);
+(setInterval will run this code every second and this will create a clock).
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>  
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">  
+
+     const text = document.querySelector('.js-container');
+     const root = ReactDOM.createRoot(text)
+     
+     setInterval(() => {
+        const currentTime = dayjs().format('HH:mm:ss');
+        const text =  <p>Current time: {currentTime}</p>;
+        root.render(text);
+     } , 1000)
+        
+    </script>
+  </body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+<!--
+2a. Create an <App> component that returns a paragraph with the text:
+“Hello, welcome to my website” inside.
+Then, render this <App>.
+
+2b. Continuing from 2a, in the <App> component, add 2 buttons after the paragraph: “Login” and “Sign up”
+Use a Fragment to group them together
+Use () to write the JSX on multiple lines
+
+2c. Continuing from 2b, in the <App> component, add 2 text boxes above the buttons with the placeholders “Email” and “Password”.
+Lay out the textboxes on separate lines using <div>
+Try adding the attribute type="password" to the password textbox. This will cover up the text as you type
+
+2d. Continuing from 2c, create a new component called LoginForm, and move the textboxes and buttons (all the login-related code) into this component. 
+Then, inside <App>, use <LoginForm> to create the textboxes and buttons.
+ 
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div> 
+    
+    <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>
+    
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>  
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> 
+    
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+    <script type="text/babel"> 
+
+      function App(){
+        return(
+            <>
+            <p>Hello, welcome to my website</p>
+            <LoginForm />
+            </>
+        )
+      }
+
+      function LoginForm() {
+        return(
+            <>
+            <div>
+            <div>
+            <input placeholder="Email"></input>
+            </div>
+            <input placeholder="Password" type="password"></input>
+            </div>
+            <button>Login</button>
+            <button>Sign up</button>
+            </>
+        )
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);   // calling a component App
+    </script>
+  </body>
+</html>
