@@ -1,0 +1,204 @@
+<!--
+In this file we learned about State => data that is connected to the HTML , when we update this data it will update the HTML, i am copying 02-Components.html code at first here and updating that file's code here ,so we would know what and why State has changed or why it is used in prokect
+To learn components , refer L2 lesson to learn State refer L3 lesson
+btw here we used both Components and State , we already learned components (Although we are just updating previous code) 
+
+also we learned about event handler : an event handler lets us run a fn when we interact with the website
+
+btw we are building https://supersimple.dev/projects/chatbot/ using react
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>  
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> 
+    <!--to get a response from a chatbot we gonna use a external library-->
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">  
+    
+
+    
+    function ChatInput(props) {
+      const array1 = React.useState('');
+      const inputText = array1[0];  // contains empty string 
+      const setInputText = array1[1];  // a fn which is used to update the inputText variable
+
+      function saveInputText(event) {
+      //console.log(event.target) // event.target= gives us the element that we're typing
+      //console.log(event.target.value)  // event.target.value= gives us the text that we're typing or we've typed
+      setInputText(event.target.value)
+      }
+
+      function sendMessage() {
+        //console.log(inputText);
+        const newChatMessages = [ // so the way hat the updated fn works is : its gonna replace the entire chatMessages array with a new array , 1st we need to make a copy of this array(chatMessages)
+          ...props.chatMessages, // goto 02-spread-operator.js for understanding , in short we created a copy of chatMessages
+          {
+            message: inputText,
+            sender: 'user',
+            id: crypto.randomUUID()
+          }
+        ]
+        props.setChatMessages(newChatMessages);  // calling the fn or updating the ChatMessages variable
+
+        const response = Chatbot.getResponse(inputText);  // this is an external library's object 
+        console.log('The response is ',response)
+        props.setChatMessages([ // so the way that the updated fn works is : its gonna replace the entire chatMessages array with a new array , 1st we need to make a copy of this array(chatMessages)
+          ...newChatMessages, // goto 02-spread-operator.js for understanding , in short we created a copy of chatMessages
+          {
+            message: response,
+            sender: 'robot',
+            id: crypto.randomUUID()
+          }
+        ]);
+        setInputText('')
+      }
+
+
+      return (    
+          <>
+            <input placeholder="Send a message to Chatbot" size="30" onChange={saveInputText} value={inputText} ></input> {/* Note: now everytime when we change the text in this input it will run this function. onChange = runs a func when we change the text inside an input. value = lets us change the value of this input or the text inside this input , if u have confusion in value atribute in input tag just visit 07-value-doubt.html         */}
+            <button onClick={sendMessage} >Send</button> 
+          </>
+      )
+    }
+
+    function ChatMessage(props) {  
+      console.log('This is props : ',props); 
+      const message = props.message
+      const sender = props.sender
+
+      if(sender === "robot"){
+        return(
+          <div>  
+            <img src="../images/robot.png" width="50" />
+            {message}
+          </div>
+        )
+      }
+      return(   
+          <div>  
+            {message}
+            <img src="../images/user.png" width="50" />
+          </div>
+      )  
+      
+    }
+
+    const container = document.querySelector('.js-container');
+    console.log(container)
+
+
+
+// before we learn State , we gonna improve the code 
+// we have made a chatmessages component to put all the code related to chatmessages
+    function ChatMessages(props) {
+// Note : React.useState returns an array , so let us store that array in a variable
+
+      return(
+        <>          
+          {props.chatMessages.map((chatMessages)=> {  // we know map goes through each value of an array and convert it into new value(based on return statement) , inshort what it return convert it into new value , or it gives us a new array , goto simple-Map-Fn-understanding
+              return(       
+                <ChatMessage message= {chatMessages.message} sender= {chatMessages.sender} id= {chatMessages.id}/> // we used {} bcoz it is in JSX we must use {} to get other values or to insert other values
+              ) // in react if we insert an array of cmponents , we need to give each component a prop key , key = helps react track changes in the array 
+            }) // How .map() works : the parameter(chatMessages) contains 1st value for 1st time(iteration) and whatever we returns from the fn will be the new 1st value 
+          }
+        </>
+    )
+
+    }
+
+    function App(){
+/*
+      const chatMessageComponents = chatMessages.map((chatMessages)=> {  // we know map goes through each value of an array and convert it into new value(based on return statement) , inshort what it return convert it into new value , or it gives us a new array , goto simple-Map-Fn-understanding 
+        return(
+          <ChatMessage message= {chatMessages.message} sender= {chatMessages.sender} key= {chatMessages.key}/> // we used {} bcoz it is in JSX we must use {} to get other values or to insert other values
+        ) // in react if we insert an array of cmponents , we need to give each component a prop key , key = helps react track changes in the array 
+      }) // How .map() works : the parameter(chatMessages) contains 1st value for 1st time(iteration) and whatever we returns from the fn will be the new 1st value 
+
+      return(  
+        <>
+            <ChatInput />
+            {chatMessageComponents} 
+        </>
+      )
+    }
+*/
+      const array = React.useState([  // so this will convert this data into state , when we update this data it will also updat the HTML , thats what state means
+        {   // Note : this array has 2 values 1st is the current value and 2nd is function to update that values
+        message: 'hello chatbot',
+        sender: 'user',
+        id: 'id1'
+        },
+        {
+          message: 'Hello! How can I help you?',
+          sender: 'robot',
+          id: 'id2'
+        },
+        {
+          message: 'Can you get me Todays date?',
+          sender: 'user',
+          id: 'id3'
+        },
+        {
+          message: 'Today is July 25',
+          sender: 'robot',
+          id: 'id4'
+        }
+      ])
+      const chatMessages = array[0]; // the first value in this array gives us the The current value of chatMessages(The current data) , This means : All the current values inside that array of messages , this is not the array's 1st element(this is React.useState so its differnet)
+      console.log('This is useStates 1st value',chatMessages);
+      const setChatMessages = array[1]; // it is a function , so this fn lets us update the data
+      console.log('This is useStates 2nd value or fn',setChatMessages);
+
+      return(  
+        <>
+            <ChatInput chatMessages={chatMessages} setChatMessages={setChatMessages}/>
+            <ChatMessages chatMessages={chatMessages}/>            
+        </>
+      )
+    }
+
+
+    ReactDOM.createRoot(container).render(<App></App>); 
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+<!--
+In this lesson we learned:
+
+Save the data (using arrays and objects)
+
+Generate the HTML (using .map() and key prop)
+
+Make it interactive, using onClick and onChange
+
+State = data that changes over time,
+and is connected to the HTML
+
+Updater function = update the state and update the HTML
+
+Array Destructuring
+
+Lifting the State Up = share state between components
+
+Made <ChatInput> interactive
+
+Got response from Chatbot
+-->

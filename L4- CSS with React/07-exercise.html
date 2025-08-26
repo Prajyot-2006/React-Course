@@ -1,0 +1,61 @@
+<!--
+Lesson 4 Exercises - CSS and Hooks
+
+Recommended: start with an empty React website to do these exercises.
+
+Challenge Exercises
+4f. We’ll create the clock from lesson 1 exercises using hooks:
+
+First, load the DayJS external library:
+https://unpkg.com/supersimpledev/dayjs.js
+
+Using React.useState() save a string time. To get the current time as a string, you can use dayjs().format('HH:mm:ss')
+Using React.useEffect() run this code once after the component is created: setInterval(() => { }, 1000) (this code runs a function every 1000 milliseconds or 1 second).
+In the function that we give to setInterval, get the time again using dayjs().format('HH:mm:ss') and update the State.
+
+
+4g. Add console.log('run code'); inside setInterval and check how many times it runs. 
+Then, remove the dependency array ([]) from React.useEffect() and check how many times it runs.
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clock</title>
+</head>
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+  <script type="text/babel">
+
+    function App() {
+      const timeArray = React.useState(dayjs().format('HH:mm:ss'));
+      const currentTime = timeArray[0];
+      const setCurrentTime = timeArray[1];
+
+      React.useEffect(() => {
+        const intervalId = setInterval(() => {
+          const newTime = dayjs().format('HH:mm:ss');
+          setCurrentTime(newTime);
+          console.log('run code')
+        }, 1000);
+
+        return () => {
+            clearInterval(intervalId);
+        }
+      }, );
+
+      return <div>Current time: {currentTime}</div>;
+    }
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+</html>

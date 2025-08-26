@@ -1,0 +1,88 @@
+<!--
+🧠 What is useEffect?
+useEffect is a function that lets you run code:
+After your component renders.
+Or when something changes in your component.
+
+🔧 Why do we use it?
+To do things like:
+Fetch data from an API.
+Update the page title.
+Set a timer.
+Log something when the component appears.
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>useEffect Example</title>
+</head>
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+    function EffectApp() {
+      const array = React.useState(0);
+      const count = array[0];
+      const setCount = array[1];
+
+      // useEffect runs AFTER the component renders
+      React.useEffect(function() {
+        console.log('The count is now:', count);  // This will run every time `count` changes
+      }, [count]);  // this is the dependency array: if count changes, run the function above
+
+      function increaseCount() {
+        setCount(count + 1);  // this updates the state (especially count variable), which causes re-render
+      }
+
+      return (
+        <>
+          <p>Count is: {count}</p>
+          <button onClick={increaseCount}>Increase</button>
+        </>
+      );
+    }
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<EffectApp />);
+  </script>
+</body>
+</html>
+
+<!--
+In short 
+useEffect runs after the component renders.
+
+The first parameter is a normal function (what you want to run).
+The second parameter is an array called the dependency array.
+If you put a variable (like count) inside that array, the function will run every time that variable changes.
+
+
+Doubt :
+And what if the array is empty ?
+Chatgpt answered :
+Great question! ✅
+
+👉 If the array is empty: []
+React.useEffect(() => {
+  console.log("Runs only once");
+}, []);
+
+🔥 What happens?
+The function runs only once, after the first render.
+It will NOT run again, no matter what updates happen in the component.
+
+
+✅ Use this when:
+You want to run setup code only once, like:
+Fetching data from an API once
+Setting up an event listener
+Scrolling once
+Logging when the component loads
+-->

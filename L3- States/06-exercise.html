@@ -1,0 +1,67 @@
+<!--for any queries related question , just watch https://youtu.be/NcnfsE1B51o?si=ZYLPXR8s0WK8QSoL
+We’ll create a display-as-you-type app.
+
+3g. Start from an empty React website and create an <input> and a <p>.
+As you type in the <input>, the text you type should also appear in the <p> with “Hello ” in front of it. (Hint: use onChange, save the text in state, and insert it in the JSX).
+![Input and output image]
+
+
+3h. Add 2 buttons beside the <input>, “Reset” and “Example”.
+• When clicking the Reset button, it removes the text in the <input>
+• When clicking the Example button, it sets an example text in the <input>, like “Alice” (or any name you want).
+• Hint: use a controlled input.
+![Input with Reset and Example buttons image]
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Display as you Type App</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      const container = document.querySelector('.js-container')
+
+      
+
+      function Work() {
+        const array = React.useState('');
+        const initailValue = array[0];
+        const setValue = array[1];
+        
+
+        function store(event) {
+          setValue(event.target.value);
+        }
+
+        function clear(event) {
+          setValue('')  // that means initialValue = ''
+        }
+
+        function example() {
+          setValue('Alice');
+        }
+
+
+        return(
+          <>
+          <input placeholder="Type something" onChange={store} value={initailValue}  ></input>
+          <button onClick={clear} >Reset</button>
+          <button onClick={example} >Example</button>
+          <p>Hello {initailValue}</p>
+          </>
+        )
+      }
+      
+
+      ReactDOM.createRoot(container).render(<Work />);
+    </script>
+  </body>
+</html>

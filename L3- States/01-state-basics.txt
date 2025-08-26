@@ -1,0 +1,130 @@
+State = data that is connected to the HTML
+when we update this data, it will update the HTML
+or 
+State = automatically updtaes the HTML when data changes
+
+🧠 What is useState?
+useState is a function in React that lets you create and manage state (data that can change) inside a function component.
+
+state has 2 values first is the current(initial value) and 2nd is the function which is used to update that value
+/*
+// Note : React.useState returns an array , so lets us store that array in a variable
+      const array = React.useState([  // so this will convert this data into state , when we update this data it will also updat the HTML
+        {
+        message: 'hello chatbot',
+        sender: 'user',
+        id: 'id1'
+        },
+        {
+          message: 'Hello! How can I help you?',
+          sender: 'robot',
+          id: 'id2'
+        },
+        {
+          message: 'Can you get me Todays date?',
+          sender: 'user',
+          id: 'id3'
+        },
+        {
+          message: 'Today is July 25',
+          sender: 'robot',
+          id: 'id4'
+        }
+      ])
+      const chatMessages = array[0]; // the first value in this array gives us the The current value of chatMessages(The current data)
+      const setChatMessages = array[1];
+
+just explain me this in very detail but in simple 
+*/
+Chatgpt said :
+
+🧠 Basic idea:
+React.useState(...) is used to make a variable reactive — meaning, if you change it, the UI will also change
+
+✅ This code:
+const array = React.useState([
+  { message: 'hello chatbot', sender: 'user', id: 'id1' },
+  { message: 'Hello! How can I help you?', sender: 'robot', id: 'id2' },
+  { message: 'Can you get me Todays date?', sender: 'user', id: 'id3' },
+  { message: 'Today is July 25', sender: 'robot', id: 'id4' }
+]);
+
+What it does:
+It creates a state variable using React.useState(...)
+It gives the initial data — which is an array of chat messages (each message is an object with message text, sender, and id).
+This useState returns an array with 2 things:
+The current data (in this case, all chat messages)
+A function to update that data
+We store that whole returned array in a variable named array.
+
+👇 Next line:
+const chatMessages = array[0];
+This takes the first thing from the array returned by useState
+So chatMessages holds the current data — the array of chat messages
+You can use this to show messages on the screen (e.g., in HTML/JSX).
+
+👇 Next line:
+const setChatMessages = array[1];
+This takes the second thing from the array
+It's a function that lets you change the chat messages
+Whenever you use this function, React will update the screen automatically
+
+🧾 Summary (in even simpler terms):
+useState(...) gives you two things:
+➤ Current value
+➤ A function to update that value
+
+const chatMessages = array[0]; // “the first value in this array gives us the current value of chatMessages (The current data)”
+Ans : Yes — that means:
+👉 All the current values inside that array of messages.
+
+So in this code:
+const array = React.useState([
+  { message: 'hello chatbot', sender: 'user', id: 'id1' },
+  { message: 'Hello! How can I help you?', sender: 'robot', id: 'id2' },
+  { message: 'Can you get me Todays date?', sender: 'user', id: 'id3' },
+  { message: 'Today is July 25', sender: 'robot', id: 'id4' }
+]);
+const chatMessages = array[0];
+==>
+✅ chatMessages now holds:
+[
+  { message: 'hello chatbot', sender: 'user', id: 'id1' },
+  { message: 'Hello! How can I help you?', sender: 'robot', id: 'id2' },
+  { message: 'Can you get me Todays date?', sender: 'user', id: 'id3' },
+  { message: 'Today is July 25', sender: 'robot', id: 'id4' }
+]
+
+
+i though it will only give the first element that is   { message: 'hello chatbot', sender: 'user', id: 'id1' },
+bcoz array[0] means the 1st value of an array , yes ?
+Chatgpt said :
+You're absolutely right about array[0] usually meaning the first element of an array — like:
+const fruits = ['apple', 'banana'];
+console.log(fruits[0]); // 'apple'
+
+But in this case, the confusion is because of this line:
+const array = React.useState([...]);
+
+🔁 What does React.useState(...) return?
+It returns a new array like this:
+[ currentValue, setFunction ]
+
+So this is not your original data array anymore — it’s a new array with two elements:
+The full state value (your whole messages array)
+A function to update that state
+
+array[0] is: your entire messages array
+array[1] is: the function to change it
+
+
+
+So yes — it holds all the objects (all messages) that you gave to useState() initially.
+And later if you add or change messages using setChatMessages, the chatMessages variable will also automatically get the updated array next time React re-renders.
+
+
+
+// in very short :
+useState gives us two values 
+1st value is the current data 
+2nd value is the updater function (if we update the fn it will also update the html)

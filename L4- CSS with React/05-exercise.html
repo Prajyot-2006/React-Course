@@ -1,0 +1,101 @@
+<!--
+Lesson 4 Exercises - CSS and Hooks
+
+Recommended: start with an empty React website to do these exercises.
+
+4a. Create the button on the right using React and CSS.
+Use the background color: rgb(25, 135, 84)
+
+4b. Using React.useState(), save a boolean isButtonOn. This will switch between true and false when clicking the button. Using isButtonOn and the Ternary Operator (?:), switch the text between “ON” and “OFF” when clicking the button.
+
+4c. When the button is “OFF”, make it red. (Using the Ternary Operator (?:), give the button a different className and use the background color: rgb(220, 53, 69))
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <style>
+
+
+    body{
+        margin: 0px;  /* we know that by default it is 10px*/
+        
+    }
+
+    button{
+        border: none;
+        border-radius: 5px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .js-container{
+        display: flex;
+        justify-content: center;
+         align-items: center; 
+         height: 100vh
+    }
+
+    .green{
+        background-color:  rgb(25 , 135 , 84);
+    }
+    .red{
+        background-color: rgb(192, 48, 48);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+
+    
+
+    function App() {
+        const array = React.useState(true);  // we know at start the button is on thats why we are giving true 
+        const isButtonOn = array[0];  // isButtonOn = true
+        const setIsButton = array[1];
+
+        function check() {
+            if(isButtonOn){
+                setIsButton(false)
+            }
+            else{
+                setIsButton(true)
+            }
+        }
+
+        let buttonText = '';
+        let buttonClass = ''
+        if(isButtonOn){
+            buttonText = 'ON'
+            buttonClass = 'green'
+        }
+
+        if(!isButtonOn){
+            buttonText = 'OFF'
+            buttonClass = 'red'
+        }
+
+        return(
+            <button  onClick={check} className={buttonClass} >{buttonText}</button>
+        )
+    }
+
+
+
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+</html>
+

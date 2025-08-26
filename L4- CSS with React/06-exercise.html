@@ -1,0 +1,129 @@
+<!--
+Lesson 4 Exercises - CSS and Hooks
+
+Recommended: start with an empty React website to do these exercises.
+
+Challenge Exercises
+4d. Start from a new React website and create the design on the right. (Hint: we already created the HTML elements for this design in exercise 2d. You can copy the code from 2d or you can start from nothing to challenge yourself).
+Background color: rgb(0, 123, 255)
+
+4e. Add a button beside the password to show / hide the password. 
+(Using State, save a boolean showPassword that switches between true and false when clicking the button. 
+To show / hide the password, switch the password <input>’s type prop between 'password' and 'text').
+
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <style>
+
+    .email{
+        margin-bottom: 12px;
+        padding-left: 12px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        border-radius: 5px;
+    }
+
+    .pass{
+        padding-left: 12px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        border-radius: 5px;
+    }
+
+    .logIn{
+        margin-top: 15px;
+        margin-right: 10px;
+        border-radius: 4px;
+        border: none;
+        background-color: rgb(0, 123, 255);
+        width: 80px;
+        height: 40px;
+        color: white;
+    }
+
+    .signUp{
+        border-radius: 4px;
+        border: none;
+        background-color: rgb(0, 123, 255);
+        width: 80px;
+        height: 40px;
+        color: white;
+    }
+
+    .para{
+        font-size: xx-large
+    }
+
+    .show{
+        margin-left: 10px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+
+
+
+    function App() {
+
+        const array = React.useState(true);
+        const isInVisible = array[0];
+        const setIsInVisible = array[1]; 
+
+        function prajyot() {
+            if(isInVisible){
+                setIsInVisible(false);
+            }
+            if(!isInVisible){
+                setIsInVisible(true);
+            }
+        }
+
+        let convert = "";
+        if (isInVisible) {
+            convert = "password";
+        }
+
+        else {
+            convert = "text";
+        }
+        
+
+        return(
+            <>
+            <p className="para" >Hello , welcome to my website</p>
+            <input  className="email" placeholder="Email" ></input>
+            <br></br>
+            <input  className="pass" placeholder="Password" type={convert} ></input>
+            <button className="show" onClick={prajyot} >Show</button>
+            <br></br>
+
+            <button className="logIn" >LogIn</button>
+            <button className="signUp" >SignUp</button>
+            </>
+        )
+    }
+
+
+
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+</html>

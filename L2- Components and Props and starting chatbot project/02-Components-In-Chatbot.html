@@ -1,7 +1,9 @@
 <!--
+In this file we learned about Components
 Component = piece of the website
 props = properties which is nothing but the attributes that we make in a component. 
 attributes are present where we call the components , like this -> <ChatMessage message= "hello chatbot" sender= "user"/> 
+btw we are building https://supersimple.dev/projects/chatbot/ using react
 -->
 
 
@@ -44,13 +46,15 @@ attributes are present where we call the components , like this -> <ChatMessage 
           </div>
         )
       }
-      return(  // each chat message has two things , some text and a profile image , since we have multiple things inside this component we can use fragments to group them together , but we will not use it bcoz if we use it then all message and image will apper side by side of the input s we will use div instead to put it down  
+      else{
+        return(  // each chat message has two things , some text and a profile image , since we have multiple things inside this component we can use fragments to group them together , but we will not use it bcoz if we use it then all message and image will apper side by side of the input s we will use div instead to put it down  
           <div>  
             {message}
             <img src="../images/user.png" width="50" />
           </div>
-
-      )  
+        )
+      }
+        
       
     }
 
@@ -70,26 +74,40 @@ attributes are present where we call the components , like this -> <ChatMessage 
 // we can put the app variable's code into a component
 
     function App(){
-      return(  // when u call a component all ur code from component which u returned will get here where u called it (it works like a function only)
+      return(  // when u call a component all ur code from component which u returned will get there where u called it (it works like a function only)
         <>
             <ChatInput />
             <ChatMessage message= "hello chatbot" sender= "user"/>  
             <ChatMessage message= "Hello! How can I help you?" sender= "robot"/>  
-            <ChatMessage message= "bankai" sender= "user"/>  
-            <ChatMessage message= "No problem! Let me know if you need help with anything else!" sender= "robot"/>  
+            <ChatMessage message= "Can you get me Todays date?" sender= "user"/>  
+            <ChatMessage message= "Today is July 25" sender= "robot"/>  
         </>
       )
     }
 
-    ReactDOM.createRoot(container).render(<App></App>); // best practice is to used components in react 
+    ReactDOM.createRoot(container).render(<App></App>); // best practice is to used components in react , here we called App component
 //  ReactDOM.createRoot(container).render(app);
     </script>
   </body>
-</html>
+</html>    
 
 
+<!--
+In this lesson:
 
+Component = a piece of the website
 
+Component = create our own HTML elements
 
+Started the Chatbot Project
 
-    
+Split the Chatbot into <ChatInput> <ChatMessage>
+
+props = make components reusable
+
+Destructuring, Guard Operator (&&)
+
+Code cleanup
+
+Created <App> component
+-->

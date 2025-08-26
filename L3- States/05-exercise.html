@@ -1,0 +1,78 @@
+<!-- for any queries related question , just watch https://youtu.be/NcnfsE1B51o?si=ZYLPXR8s0WK8QSoL
+Lesson 3 Exercises - State and Event Handlers
+Recommended: start with an empty React website to do these exercises.
+We’ll create a simple counter app. ![Clicked 1 times]
+
+3a. Create a button with the text “Clicked 0 times”. When you click this button, display “Clicked” in the console. (Hint: use onClick)
+
+3b. Using React.useState(), save a count. The count should have an initial value of 0, and React.useState() should return 2 values: count (the current data) and setCount (the updater function).
+Update the text in the button so it displays the count instead of 0.
+When clicking the button, use the updater function to increase the count by 1. Click the button a few times to test your code.
+
+3c. Update the text in the button so that if count is equal to 1, the text is
+“Clicked 1 time” instead of “Clicked 1 times”.
+![Clicked 2 times button]
+
+3d. Separate the counter into a component. Then, use this component to create 2 counters on the website. Click both counters a few times to test it. Notice, each counter can have a different count.
+![Clicked 2 times Clicked 1 time buttons]
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Counter</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      const container = document.querySelector('.js-container');
+
+      function Counter() {
+        const countState = React.useState(0); // no destructuring
+        let count = countState[0];
+        const setCount = countState[1];
+
+        let grammar = 'times'
+        if(count === 1){
+          grammar = 'time'
+        }
+
+        function handleClick() {
+          setCount(count + 1);
+          console.log('Clicked');
+        }
+
+        function reset() {
+          count = 0;
+        }
+
+        return (
+          <>
+          <button onClick={handleClick}>
+            Clicked {count} {grammar}
+          </button>
+          </>
+        );
+      }
+
+      
+
+      function App() {
+        return (
+          <>
+            <Counter />
+            <Counter />
+            
+          </>
+        );
+      }
+
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

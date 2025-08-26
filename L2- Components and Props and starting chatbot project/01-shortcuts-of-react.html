@@ -17,7 +17,7 @@ Component = piece of the website
     <script src="https://unpkg.com/supersimpledev/babel.js"></script> 
     <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
     <script type="text/babel"> 
-
+// This is a component : a piece of the website 
     function ChatInput() {  // the component name must start with a capital letter , this function will return some html
         return (
             <div>
@@ -27,15 +27,15 @@ Component = piece of the website
         )
     }
 
-    const container = document.querySelector('.js-container');
-    const div =  (  // we can also do like this <ChatInput></ChatInput>  this i known as component syntax
+    const container = document.querySelector('.js-container');  // dom 
+    const div =  (  // we can also do like this <ChatInput></ChatInput>  this is known as component syntax
         <div>
-            {ChatInput()}
+            {ChatInput()}  {/*here we called a component*/}
         </div>
     )
 
-    ReactDOM.createRoot(container).render(div);
-    
+    ReactDOM.createRoot(container).render(div); // render means print , do something inside div of class js-container
+//  ReactDOM.createRoot(where to do).render(what to do)
 
     
     </script>
@@ -46,7 +46,7 @@ Component = piece of the website
 in react we can do shortcuts like 
 <input></input>  // there is a shortcut for this in react
 <input />   // this shortcut is only applicable if there is nothing present inside the tag 
-
+❌ <input>hello</input> => <input />
 
 also when creating component like ChatInput or etc and when using that component in a variable for eg look at div varaible 
 {ChatInput()}  // instead of this we can do like this <ChatInput></ChatInput> and there is nothing present in this tag so 

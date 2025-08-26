@@ -1,0 +1,22 @@
+
+.input-tag{
+    
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-width: 1px;
+    flex-grow: 1;  /*now we can see it grows in website flex-grow = makes and element grow and take up the remaining space*/
+    
+}
+
+
+.app-container{
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+

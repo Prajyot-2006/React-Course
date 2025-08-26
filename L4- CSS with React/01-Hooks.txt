@@ -1,0 +1,14 @@
+React has other Hooks that we can use
+
+React Hooks  
+useState()  
+useEffect()  
+useRef()  
+and more...
+
+Every hook starts  
+with the word "use"
+
+useEffect = run some code  
+after the component is  
+created or updated

@@ -1,0 +1,12 @@
+in this lesson = we created chatbot-project using react set up , check the folder name chatbot-project for more info
+
+
+In this lesson we learned to do this :
+1. Proper React Setup (using command line, npm, and Vite)
+2. Command Line = give commands to our computer
+3. NPM = download and use external libraries (or packages)
+4. create-vite Package = helps us create a Proper React Setup
+5. Moved our Chatbot Project into the new React Setup
+6. ESLint = highlights problems in our JavaScript code
+7. JavaScript Modules = separate our code into different files
+8. Separated each component into its own .jsx and .css files

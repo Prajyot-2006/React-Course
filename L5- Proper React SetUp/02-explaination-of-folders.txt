@@ -1,0 +1,12 @@
+package.json = list of all the packages needed for this project
+npm install will install all of these packages at a same time
+
+src = this folder contains the code for our website so our js and css code goes here
+assets = this folder contains images which we want in a website
+public = this folder contains files that should be available to the public
+eslint.config.js = this folder is used by a tool called eslint , eslint highlights problems in our JS code for that we need to install a extensin in vscode named as eslint 
+index.html = we know what it is 
+package.lock.json = it saves the version no of all the packages that we install
+vite.config.js = vite.config.js configure vite. vite = tool that we used to setup this project. vite also helps us build the website. that means it takes all the js and css and the loads them into the html file. vite also creates a server , vite server actually works like live server 
+
+Note : the only files we need to focus on are the html file and the src folder's file

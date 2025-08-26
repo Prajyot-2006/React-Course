@@ -1,0 +1,79 @@
+<!--
+🧠 What is useRef?
+useRef is a hook that gives you a box (an object) that you can use to store a value, and that value doesn’t change when the component re-renders.
+
+🧲 You use it for:
+- Accessing DOM elements (like input, div, etc.)
+- Storing any value that you don’t want to cause re-render when it changes
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React useRef Example</title>
+</head>
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+    function RefApp() {
+      const inputRef = React.useRef(null);  // Creates a ref. Note : always put null 
+// we can use this ref in any html tags like input,paragraph,img etc
+      function focusInput() {
+        inputRef.current.focus();  // Focus the input element
+      }
+
+      return (
+        <>
+          <input ref={inputRef} />  {/* Attach the ref here */}  
+          <button>Grandpa Zeno</button>        
+          <button onClick={focusInput}>Focus Input</button>
+        </>
+      );
+    }
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<RefApp />);
+  </script>
+</body>
+</html>
+
+<!--
+✅ What it does:
+The input box gets focused when you click the button.
+
+useRef is used to access the actual input DOM element directly.
+
+
+🔹 Why useRef(null)?
+null means "empty for now"
+React will fill it with the real DOM element after render
+
+🔹 Why .current?
+useRef() returns an object like:
+{ current: null }
+After rendering, current holds the real value (like an input DOM element)
+
+So to access the element:
+👉 inputRef.current
+
+✅ The .current is where the real value (the DOM element) is stored.
+So later, after render, React updates it:
+inputRef.current = <input />  // real input DOM element
+
+
+💡 Rule:
+Each useRef() should be connected to only one element at a time.
+
+If you want to refer to multiple elements, use different refs:
+
+const inputRef = React.useRef(null);
+const ZenoButtonRef = React.useRef(null);
+
+-->
+
+

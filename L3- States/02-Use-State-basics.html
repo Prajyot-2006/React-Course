@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Counter Example</title>
+</head>
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+    function CounterApp() {
+      const array = React.useState(0);
+      const count = array[0] 
+      console.log(count)  // 0
+      const setCount = array[1]
+      console.log(setCount)   // some function
+
+      function increaseCount() {
+        // setCount(1);
+        setCount(count + 1);  // this fn replace the count variable with this parameter , why only count variable bcoz useState gives 2 values 1st is the curent value and 2nd is the fn to update that current value , so in this example the 1st value is stored in count variable and the 2nd value which is fn that is stored in a setCount variable so count is tied to setCount bcoz of ReactUseState
+      }
+
+      return (  // react Re-renders the return statement when the useState's fn is called(that is the setCount is called)
+        <>
+          <p>Current count: {count}</p>
+          <button onClick={increaseCount}>Add +1</button>  {/*dont use curly bracket even though it is function to call, this is JSX code not normal JavaScript code*/}
+        </>
+      );
+    }
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<CounterApp />);
+  </script>
+</body>
+</html>
+
+<!--
+Some doubts :
+
+when we give something to setCount then the setCount fn starts and updates the count variable 
+by replacing that something value or setCount's parameter , is that correct ?
+
+Answer :
+Exactly right! Here’s a simple breakdown:
+setCount is a function React gives you to update the state variable count.
+When you call setCount(1), React replaces the current value of count(which is 0) with 1.
+After calling setCount(1), React re-renders your component or it re-renders the component's return statemnt so that count becomes 1 inside your component. (btw this is automation feature in react we dont see how it re-renders)
+So yes, setCount updates the state value (count) by replacing it with whatever argument you pass.
+
+
+Important:
+Calling setCount does not immediately change count in your current code execution.
+It tells React: "Please update count to this new value and re-render later."
+
+Example:
+console.log(count);  // say it's 0 now
+setCount(1);
+console.log(count);  // still 0 here, because state update is async
+But on the next render, count will be 1.
+
+Inshort about 2nd value(or the fn) of the useState : When you call the state updater function (setCount), 
+React schedules a re-render of the component, and that means it re-runs the function and re-evaluates the JSX inside the return to update the UI.
+-->

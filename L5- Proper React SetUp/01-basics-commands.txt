@@ -1,0 +1,37 @@
+mkdir = make directory or create a new folder
+directory = a folder
+mkdir = creates a new folder 
+for eg : mkdir test 
+it creates a new folder named as test 
+
+pwd = it stands for print working directory , tells us about path like C:\Users\Prajyot\OneDrive\Desktop\React course
+for eg : pwd 
+
+ls = it will list everything inside this folder such as files , folders
+for eg : ls 
+
+cd = is used to go to a particular folder 
+for eg : cd L1- React basics
+
+
+we already learned to download and use node js to run js code outside of a web-page or browser 
+npm = node package manager
+package = external library
+npm = lets us install external libraries or packages into our project 
+
+
+we have done this in this lesson and named the project name as chatbot-project
+package = create-vite 
+what it does = helps us setup a new react project
+
+to use create-vite command we need to do 2 steps :
+1. install the create-vite package
+2. run the create-vite in the command line
+
+we have a shortcut for this called npx which does this 2 steps in a single step 
+npx create-vite@6.0.1
+@ = we gonna use a specific version of create-vite 
+Now run this to install all packages which are needed for this project or to run react code
+cd chatbot-project
+npm install (its gonna install a lot of packages) all of the packages are downloaded in the node module folder
+npm run dev (this wil start up our new react website)
