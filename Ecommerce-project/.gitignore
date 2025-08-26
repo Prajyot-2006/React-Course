@@ -1,3 +1,6 @@
+.gitignore = tells git which files and folders to ignore (not to track changes)
+
+
 # Logs
 logs
 *.log
@@ -7,10 +10,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+node_modules  it wont track changes in node_modules folder/file
 dist
 dist-ssr
 *.local
+why node-modules folder ignore bcoz we usually dont change anything in node_modules , infact we generated that folder using packages
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +26,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
