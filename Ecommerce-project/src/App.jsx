@@ -2,6 +2,7 @@
 import { HomePage } from './pages/HomePage'
 import { CheckoutPage } from './pages/CheckoutPage'
 import { Routes , Route } from 'react-router'  // we gonna use routes thats why we are loading it
+import { Orders } from './pages/OrdersPage'
 import './App.css'
 
 
@@ -16,6 +17,7 @@ function App() {
     <Routes>  
       <Route path="/" element={<HomePage />}></Route>  {/*we gonna give this Route component 2 props 1st prop is path (this tells react the URL path of the page) for the homepage the url path is empty so thast why we gave / to path.  2nd prop is element , this tells react which element or component to display*/}
       <Route path="checkout" element={<CheckoutPage />}></Route>
+      <Route path="orders" element={<Orders />}></Route>
     </Routes>
   )
 }
