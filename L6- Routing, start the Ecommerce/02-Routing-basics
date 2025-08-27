@@ -4,4 +4,13 @@ This lets us reuse our HTML code.
 to use routing we gonna install npm package called react-router
 
 how to use the react router 
-1. to use react-router we need to load it when we render the app component 
+1. to use react-router we need to load it when we render the app component just do chatgpt for learning it properly 
+
+
+In this lesson:
+Started the Ecommerce project using React and Vite
+Git = track changes in our code
+Routing = create multiple pages in React
+Created the HomePage, CheckoutPage, OrdersPage
+Updated all the links to work with routing
+Separated the Header into a component
