@@ -1,0 +1,21 @@
+what is backend : 
+backend is a another computer or company's computer which is used for data fet6ching or sending data 
+we have downloaded a backend code from supersimple's link in description 
+
+what is data fetching :
+data fetching = get data from the backend(using our code)
+
+asynchronous code = a code that does not finish right away
+
+fetch returna promise 
+promise = let us wait for asynchronous code to finish
+
+
+fetch('http://localhost:3000/api/products').then((response) => {
+
+})
+this link btwn fetch is get request that means we are requesting data to this link it takes time to send and get a response from it so whenever in future we get a response then the .then fn will run 
+thats what is fetch , when fetch gets a response from the backend it will save it as a parameter in this inner fn called response
+
+api/products this is called a request 
+the backend give a response is called a response
