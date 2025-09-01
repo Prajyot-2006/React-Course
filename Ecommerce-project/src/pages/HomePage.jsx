@@ -3,10 +3,10 @@
 import { Header } from '../components/Header';
 import './HomePage.css';
 import { products } from '../../starting-code/data/products';
-
+import axios from 'axios';
 export function HomePage() {
 // one way to get data from the backend is to use fetch , so fetch is a built-in fn provided by JS
-    fetch('http://localhost:3000/api/products').then((response) => {
+/*    fetch('http://localhost:3000/api/products').then((response) => {
         //console.log(response);
         response.json().then((data) => {  // data is related to products  , // .json gives us the data that is attach to the response and its a asynchronous code so we cant store it in a variable ,its also a promise so we can use .then 
             console.log(data)  // it will give an array of products
@@ -14,8 +14,16 @@ export function HomePage() {
         })  
 
     });  // btwn a bracket we gonna create a string and we gonna put a url that we wanna get data from // so if we fetch data from this url , this should give us the products data that we saw earlier. however we cannot save data in a variable like this const a = fetch('https://') thats because when we contact a backend it takes time for this code(const a = ...) to reach the backend and to get a response // when backend gives response then it will run the fn inside .then
-            
+*/            
+// we can use axios to do the above code(fetch code) or instead of using above code we can also use axios
+// axios = cleaner way to make requests to the backend
+    axios.get('http://localhost:3000/api/products').then((response) => {
+        console.log(response.data);
+    }); // axios = is the cleaner way to make requests to the backend its just like the fetch which we did or commented but in a cleaner form 
+        
     
+    
+
     return (
         <>
             <title>Ecommerce Project</title>
