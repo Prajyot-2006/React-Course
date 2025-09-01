@@ -1,0 +1,29 @@
+The Link component in React (from react-router-dom) is used to navigate between different pages or routes without reloading the page.
+
+import { Link } from "react-router-dom";
+
+function Navbar() {
+  return (
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+    </nav>
+  );
+}
+
+
+Here:
+to="/" → sets the path to navigate to.
+Clicking the link changes the URL and shows the correct page, but the app doesn’t refresh like a normal <a> tag.
+
+here's the difference btwn <a> tage and Link component , u will get to know why we use Link instead of <a></a>
+
+| <Link> (React)                                       | <a> (HTML)                                      |
+| ------------------------------------------------------ | ------------------------------------------------- |
+| Comes from react-router-dom.                         | Built into HTML.                                  |
+| Changes the URL *without refreshing* the whole page. | Reloads the entire page when clicked.             |
+| Faster, keeps your app state (no data lost).           | Page reloads, losing app state.                   |
+| Use for navigation *inside your React app.          | Use for **external websites* or non-React pages. |
+
+
+favicon means the small icon which we see in browsers tab or before the title name

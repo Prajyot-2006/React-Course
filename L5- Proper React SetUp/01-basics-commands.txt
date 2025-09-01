@@ -29,7 +29,7 @@ to use create-vite command we need to do 2 steps :
 2. run the create-vite in the command line
 
 we have a shortcut for this called npx which does this 2 steps in a single step 
-npx create-vite@6.0.1
+npx create-vite@6.0.1 {which i got from supersimledev's descripton}
 @ = we gonna use a specific version of create-vite 
 Now run this to install all packages which are needed for this project or to run react code
 cd chatbot-project
