@@ -2,6 +2,7 @@
 // we are making supersimple.dev/projects/ecommerce
 import { Header } from '../components/Header';
 import './HomePage.css';
+import { useEffect , useState} from 'react';
 import { products } from '../../starting-code/data/products';
 import axios from 'axios';
 export function HomePage() {
@@ -17,10 +18,14 @@ export function HomePage() {
 */            
 // we can use axios to do the above code(fetch code) or instead of using above code we can also use axios
 // axios = cleaner way to make requests to the backend
-    axios.get('http://localhost:3000/api/products').then((response) => {
-        console.log(response.data);
-    }); // axios = is the cleaner way to make requests to the backend its just like the fetch which we did or commented but in a cleaner form 
-        
+
+    const [products , setProducts] = useState([]);
+// when homepage re-renders then the entire product also re-renders so instead of re-rendering entire product when homepage re-renders we gonna put the products into useEffect an set dependency array as empty so that it will run only once when the component is created 
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/products').then((response) => {  // backend's reply is stored in response parameter
+            setProducts(response.data);
+        }); // axios = is the cleaner way to make requests to the backend its just like the fetch which we did or commented but in a cleaner form 
+    } , [] ); // dependency array = let us control when useEffect runs  , [] = an empty array means only run once after the component is created 
     
     
 
