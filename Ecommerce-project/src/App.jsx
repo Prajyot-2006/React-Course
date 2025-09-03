@@ -17,11 +17,11 @@ function App() {
 
   */
 
-  const [cart , setCart] = useState([]);
+  const [cart , setCart] = useState([]);  // since App is a parent component so we are shifting cart here 
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/cart-items').then((response) => {
-      setCart((response.data));
+    axios.get('http://localhost:3000/api/cart-items?expand=product').then((response) => { // ?expand=product is the query parameter which is used to add additional info to our request. like in this case expand=product means we are requesting product details in cart-items
+      setCart((response.data));  // cart = response.data
     })
   } , [])
   
