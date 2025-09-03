@@ -5,6 +5,8 @@ import { Routes , Route } from 'react-router'  // we gonna use routes thats why 
 import { Orders } from './pages/OrdersPage'
 import { Tracking } from './pages/TrackingPage'
 import './App.css'
+import axios from 'axios';
+import { useState , useEffect } from 'react' 
 
 
 function App() {
@@ -14,10 +16,19 @@ function App() {
 
 
   */
+
+  const [cart , setCart] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/cart-items').then((response) => {
+      setCart((response.data));
+    })
+  } , [])
+  
   return (
     <Routes>  
-      <Route path="/" element={<HomePage />}></Route>  {/*we gonna give this Route component 2 props 1st prop is path (this tells react the URL path of the page) for the homepage the url path is empty so thast why we gave / to path.  2nd prop is element , this tells react which element or component to display*/}
-      <Route path="checkout" element={<CheckoutPage />}></Route>
+      <Route path="/" element={<HomePage  cart={cart} />}></Route>  {/*we gonna give this Route component 2 props 1st prop is path (this tells react the URL path of the page) for the homepage the url path is empty so thast why we gave / to path.  2nd prop is element , this tells react which element or component to display*/}
+      <Route path="checkout" element={<CheckoutPage  cart={cart} />}></Route>
       <Route path="orders" element={<Orders />}></Route>
       <Route path="tracking" element={<Tracking />}></Route>
     </Routes>

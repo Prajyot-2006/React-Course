@@ -5,7 +5,8 @@ import './HomePage.css';
 import { useEffect , useState} from 'react';
 //import { products } from '../../starting-code/data/products';
 import axios from 'axios';
-export function HomePage() {
+
+export function HomePage(props) {
 // one way to get data from the backend is to use fetch , so fetch is a built-in fn provided by JS
 /*    fetch('http://localhost:3000/api/products').then((response) => {
         //console.log(response);
@@ -22,7 +23,8 @@ export function HomePage() {
 // the url path /api/products = gives us the product data
 // the url path /api/cart-items = gives us the cart data
     const [products , setProducts] = useState([]);
-    const [cart , setCart] = useState([]);
+    const cart = props.cart;
+    
 
 // when homepage re-renders then the entire product also re-renders so instead of re-rendering entire product when homepage re-renders we gonna put the products into useEffect an set dependency array as empty so that it will run only once when the component is created 
     useEffect(() => {
@@ -30,10 +32,7 @@ export function HomePage() {
             setProducts(response.data);
         }); // axios = is the cleaner way to make requests to the backend its just like the fetch which we did or commented but in a cleaner form 
 
-        axios.get('http://localhost:3000/api/cart-items').then((response) => {
-            setCart((response.data));
-
-        })
+        
     } , [] ); // dependency array = let us control when useEffect runs  , [] = an empty array means only run once after the component is created 
     
     
