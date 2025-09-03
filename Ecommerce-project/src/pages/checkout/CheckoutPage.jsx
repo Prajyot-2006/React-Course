@@ -25,6 +25,21 @@ export function CheckoutPage(props) {
         })
     }, []);
 
+    /*
+    useEffect(() => {
+        const fetchCheckOutData = async () = {
+        let response = await axios.get('http://localhost:3000/api/delivery-options?expand=estimatedDeliveryTime')
+        setDeliveryOptions(response.data);
+
+
+        response = await axios.get('http://localhost:3000/api/payment-summary')
+        setPaymentSummary(response.data);
+        }
+        fetchCheckOutData();
+   
+}, []);
+    */
+
 
     return (
         <>

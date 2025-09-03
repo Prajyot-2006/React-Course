@@ -26,7 +26,7 @@ export function HomePage(props) {
     const [products , setProducts] = useState([]);
     const cart = props.cart;
     
-
+/*
 // when homepage re-renders then the entire product also re-renders so instead of re-rendering entire product when homepage re-renders we gonna put the products into useEffect an set dependency array as empty so that it will run only once when the component is created 
     useEffect(() => {
         axios.get('http://localhost:3000/api/products').then((response) => {  // backend's reply is stored in response parameter (infuture)
@@ -36,7 +36,19 @@ export function HomePage(props) {
         
     } , [] ); // dependency array = let us control when useEffect runs  , [] = an empty array means only run once after the component is created 
     
+*/
+// doing the axios code(upper commented code) using async await 
+// async await = lets us write asynchronous code like normal code
+    useEffect(() => {
+        const getHomeData = async () => {
+            const response = await axios.get('http://localhost:3000/api/products')  
+            setProducts(response.data);
+
+        }
+        getHomeData();
+    } , [] ); 
     
+
 
     return (
         <>

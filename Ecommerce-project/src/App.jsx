@@ -25,6 +25,17 @@ function App() {
     })
   } , [])
   
+
+
+  /*  upper code using async await 
+    useEffect(() => {
+      const fetchAppData = async () => {
+        const response = await axios.get('http://localhost:3000/api/cart-items?expand=product')
+        setCart((response.data));  // cart = response.data
+    };
+    fetchAppData()
+  } , [])
+  */
   return (
     <Routes>  
       <Route path="/" element={<HomePage  cart={cart} />}></Route>  {/*we gonna give this Route component 2 props 1st prop is path (this tells react the URL path of the page) for the homepage the url path is empty so thast why we gave / to path.  2nd prop is element , this tells react which element or component to display*/}
