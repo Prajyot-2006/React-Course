@@ -25,6 +25,7 @@ export function HomePage(props) {
 // the url path /api/cart-items = gives us the cart data
     const [products , setProducts] = useState([]);
     const cart = props.cart;
+    const loadCart = props.loadCart;
     
 /*
 // when homepage re-renders then the entire product also re-renders so instead of re-rendering entire product when homepage re-renders we gonna put the products into useEffect an set dependency array as empty so that it will run only once when the component is created 
@@ -58,8 +59,7 @@ export function HomePage(props) {
 
 
             <div className="home-page">
-                <ProductsGrid products={products}/>
-
+                <ProductsGrid products={products} loadCart={loadCart} />
             </div>
 
         </>
