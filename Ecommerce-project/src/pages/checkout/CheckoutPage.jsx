@@ -8,6 +8,7 @@ import { PaymentSummary } from './PaymentSummary';
 
 export function CheckoutPage(props) {
     const cart = props.cart;
+    const loadCart = props.loadCart; 
     const [deliveryOptions, setDeliveryOptions] = useState([]);
 
     const [paymentSummary, setPaymentSummary] = useState(null);  // paymentSummary is gonna be a object
@@ -23,7 +24,7 @@ export function CheckoutPage(props) {
         axios.get('http://localhost:3000/api/payment-summary').then((response) => {
             setPaymentSummary(response.data);
         })
-    }, []);
+    }, [cart]);
 
     /*
     useEffect(() => {
@@ -68,10 +69,10 @@ export function CheckoutPage(props) {
                 <div className="page-title">Review your order</div>
 
                 <div className="checkout-grid">
-                    <OrderSummary  cart={cart} deliveryOptions={deliveryOptions} />
+                    <OrderSummary  cart={cart} deliveryOptions={deliveryOptions} loadCart={loadCart} />
 
 
-                            <PaymentSummary paymentSummary={paymentSummary} />
+                    <PaymentSummary paymentSummary={paymentSummary} />
                 </div>
             </div >
         </>

@@ -12,12 +12,12 @@ export function Product(props) {
                         quantity: quantity
                     }); // we need to tell the backend which product to add to the cart to do that we can give axios.post another value which is a object, wehn we use post we can also send info to the backend using an object(this is called the request body)
                     await loadCart();
-                }
+                };
 
     const selectQuantity = (event) => {
-                    const quantitySelectod = Number(event.target.value);
-                    setQuantity(quantitySelectod)
-                    console.log(quantitySelectod)
+                    const quantitySelected = Number(event.target.value);
+                    setQuantity(quantitySelected)
+                    console.log(quantitySelected)
                 }
     return (
         <div key={product.id} className="product-container">
@@ -44,7 +44,7 @@ export function Product(props) {
             </div>
 
             <div className="product-quantity-container">
-                <select value={quantity} onChange={selectQuantity()} >
+                <select value={quantity} onChange={selectQuantity} >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -66,7 +66,7 @@ export function Product(props) {
             </div>
 
             <button className="add-to-cart-button button-primary"
-                onClick={addToCart()}>
+                onClick={addToCart}>
 
                 {/* 
                             <button className="add-to-cart-button button-primary"
